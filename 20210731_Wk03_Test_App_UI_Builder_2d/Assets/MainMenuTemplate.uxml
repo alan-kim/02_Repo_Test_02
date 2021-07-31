@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="ButtonSytle.uss" />
+    <ui:VisualElement name="Background" style="background-color: rgba(141, 166, 255, 255); height: 1104px; width: 768px; align-items: center; justify-content: center;">
+        <ui:VisualElement class="Button-sytle" style="height: 512px; width: 327.6666px; background-color: rgba(255, 255, 255, 255); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; justify-content: center; align-items: center;">
+            <ui:Label text="Main Menu" display-tooltip-when-elided="true" name="Main_Menu" style="width: 272px; height: 41.33334px; position: absolute; top: 110px; font-size: 30px; align-items: center; -unity-text-align: upper-center;" />
+            <ui:Button text="Start Game" display-tooltip-when-elided="true" name="Start_Game" class="Button-sytle" style="-unity-background-image-tint-color: rgba(79, 35, 35, 255);" />
+            <ui:Button text="Show Message" display-tooltip-when-elided="true" name="Show_Message" class="button_style_2 Button-sytle" />
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="Message_Text" style="display: none;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
