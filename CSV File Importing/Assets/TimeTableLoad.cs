@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public class TimeTableLoad : MonoBehaviour
 {
@@ -43,6 +44,9 @@ public class TimeTableLoad : MonoBehaviour
                 ti.Location = row[4];
 
                 times.Add(ti);
+
+                // read the line in ti.start
+                // convert time
             }
         }    
        foreach (Timetable ti in times)
@@ -54,15 +58,34 @@ public class TimeTableLoad : MonoBehaviour
             endList.Add(ti.End);
 
 
-            //Debug.Log(ti.Day + "," + ti.Start + "," + ti.End + "," + ti.Duration + "," + ti.Location);
-            /*
+            //////////////////////////////////////// if wanna use debug log instead of the recall text
+            /*Debug.Log(ti.Day + "," + ti.Start + "," + ti.End + "," + ti.Duration + "," + ti.Location);
             Debug.Log(ti.Day);
             Debug.Log(ti.Start);
             Debug.Log(ti.End);
             */
-       }
 
-       for(int i = 0; i < startList.Count; i++)
+            var s = ti.End;
+            Console.WriteLine(ConvertTime(s));
+
+            string ConvertTime(string s)
+            {
+                return DateTime.Parse(s).ToString("HHmm");
+            }
+            Debug.Log(DateTime.Parse(s).ToString("HHmm"));
+
+
+            var u = ti.Start;
+            Console.WriteLine(ConvertTime2(s));
+
+            string ConvertTime2(string u)
+            {
+                return DateTime.Parse(u).ToString("HHmm");
+            }
+            Debug.Log(DateTime.Parse(u).ToString("HHmm"));
+        }
+
+        for (int i = 0; i < startList.Count; i++)
         {
             string testText = "";
             bool testBool = false;
@@ -82,6 +105,10 @@ public class TimeTableLoad : MonoBehaviour
 
         Debug.Log(endList);
         Debug.Log(endList.Count.ToString());
+
+       
+        
+
     }
 
     private void Update()
