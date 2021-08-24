@@ -22,6 +22,16 @@ public class TimeTableLoad : MonoBehaviour
 
     List<string> endList = new List<string>();
 
+    string currentDay = "";
+
+    string currentTime = "";
+
+    int currentTimeInt;
+
+    List<int> startIntList = new List<int>();
+
+    List<int> endIntList = new List<int>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,19 +82,22 @@ public class TimeTableLoad : MonoBehaviour
             {
                 return DateTime.Parse(s).ToString("HHmm");
             }
-            Debug.Log(DateTime.Parse(s).ToString("HHmm"));
+            //Debug.Log(DateTime.Parse(s).ToString("HHmm"));
+            endIntList.Add(int.Parse(DateTime.Parse(s).ToString("HHmm")));
 
 
             var u = ti.Start;
-            Console.WriteLine(ConvertTime2(s));
+            Console.WriteLine(ConvertTime2(u));
 
             string ConvertTime2(string u)
             {
                 return DateTime.Parse(u).ToString("HHmm");
             }
-            Debug.Log(DateTime.Parse(u).ToString("HHmm"));
+            //Debug.Log(DateTime.Parse(u).ToString("HHmm"));
+            startIntList.Add(int.Parse(DateTime.Parse(u).ToString("HHmm")));
         }
 
+        /*
         for (int i = 0; i < startList.Count; i++)
         {
             string testText = "";
@@ -95,8 +108,9 @@ public class TimeTableLoad : MonoBehaviour
             testBool = testText.Contains("pm");
             Debug.Log(testBool.ToString());
         }
+        */
 
-
+        /*
         Debug.Log(dayList);
         Debug.Log(dayList.Count.ToString());
 
@@ -105,14 +119,68 @@ public class TimeTableLoad : MonoBehaviour
 
         Debug.Log(endList);
         Debug.Log(endList.Count.ToString());
+        */
 
-       
-        
+        currentDay = System.DateTime.Now.DayOfWeek.ToString();
+        currentTime = System.DateTime.UtcNow.ToLocalTime().ToString("HHmm");
+        currentTimeInt = int.Parse(currentTime);
+        //Debug.Log(currentTimeInt.ToString());
+        for (int i = 0; i < dayList.Count; i++)
+        {
+            if (currentDay == dayList[i])
+            {
+                for (int j = 0; j < startIntList.Count; j++)
+                {
+                    if (currentTimeInt < startIntList[j] || currentTimeInt > endIntList[j])
+                    {
+                        Debug.Log("Free" + " " + dayList[j]);
+                    }
+                    else
+                    {
+                        Debug.Log("Occupied" + " " + dayList[j]);
+                    }
+                }
+            }
+
+            else
+            {
+                Debug.Log("Free" + " " + dayList[i]);
+            }
+        }
+
 
     }
 
+    
+    /*
     private void Update()
     {
-        
+        currentDay = System.DateTime.Now.DayOfWeek.ToString();
+        currentTime = System.DateTime.UtcNow.ToLocalTime().ToString("HHmm");
+        currentTimeInt = int.Parse(currentTime);
+        //Debug.Log(currentTimeInt.ToString());
+        for(int i = 0; i < dayList.Count; i++)
+        {
+            if (currentDay == dayList[i])
+            {
+                for (int j = 0; j < startIntList.Count; j++)
+                {
+                    if (currentTimeInt < startIntList[j] || currentTimeInt > endIntList[j])
+                    {
+                        Debug.Log("Free");
+                    }
+                    else
+                    {
+                        Debug.Log("Occupied");
+                    }
+                }
+            }
+
+            else
+            {
+                Debug.Log("Free");
+            }
+        }
     }
+    */
 }
