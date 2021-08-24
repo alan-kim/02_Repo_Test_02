@@ -147,11 +147,7 @@ public class TimeTableLoad : MonoBehaviour
                 Debug.Log("Free" + " " + dayList[i]);
             }
         }
-
-
     }
-
-    
     /*
     private void Update()
     {
