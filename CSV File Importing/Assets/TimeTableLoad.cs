@@ -58,9 +58,11 @@ public class TimeTableLoad : MonoBehaviour
                 // read the line in ti.start
                 // convert time
             }
-        }    
+        }
+        double textGap = 0;
        foreach (Timetable ti in times)
        {
+            //textGap+= recallTextObject.
             Instantiate(recallTextObject, contentWindow);
             recallTextObject.GetComponent<Text>().text = ti.Day + "," + ti.Start + "," + ti.End + "," + ti.Duration + "," + ti.Location;
             dayList.Add(ti.Day);
